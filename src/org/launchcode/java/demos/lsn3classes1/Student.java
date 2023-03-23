@@ -12,12 +12,12 @@ public class Student {
 
 
 
-    public Student(String name, int studentId, int numberOfCredits, double gpa) {
-        this.name = name;
-        this.studentId = studentId;
-        this.numberOfCredits = numberOfCredits;
-        this.gpa = gpa;
-    }
+//    public Student(String name, int studentId, int numberOfCredits, double gpa) {
+//        this.name = name;
+//        this.studentId = studentId;
+//        this.numberOfCredits = numberOfCredits;
+//        this.gpa = gpa;
+//    }
 
     public String getName(){
         return this.name;
