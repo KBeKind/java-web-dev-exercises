@@ -9,9 +9,7 @@ public class Student {
     private int studentId;
     private int numberOfCredits = 0;
     private double gpa = 0.0;
-
-
-
+// constructor - but we probably won't use it
 //    public Student(String name, int studentId, int numberOfCredits, double gpa) {
 //        this.name = name;
 //        this.studentId = studentId;
@@ -44,5 +42,45 @@ public class Student {
         gpa = newGpa;
     }
 
+    public String getGradeLevel(int totalCredits){
+        String gradeLevel;
+        if(totalCredits < 30){
+            gradeLevel = "Freshman";
+        } else if(totalCredits < 60){
+            gradeLevel = "Sophomore";
+        } else if(totalCredits < 90){
+            gradeLevel = "Junior";
+        } else {
+            gradeLevel = "Senior";
+        }
+        return gradeLevel;
+    }
+
+    public void addGrade(int credits, double grade){
+        double totalQualityScore = gpa * numberOfCredits;
+        totalQualityScore  += credits * grade;
+        numberOfCredits += credits;
+        gpa = totalQualityScore / numberOfCredits;
+
+    }
+
+    public String toString() {
+        String studentReport = String.format("%s is a %s with %d credits and a GPA of %.2f", this.name, this.getGradeLevel(this.numberOfCredits), this.getNumberOfCredits(), this.getGpa());
+        return studentReport;
+    }
+
+    public boolean equals(Object toBeCompared){
+        if (toBeCompared == this) {
+            return true;
+        }
+        if (toBeCompared == null) {
+            return false;
+        }
+        if (toBeCompared.getClass() != getClass()) {
+            return false;
+        }
+        Student theStudent = (Student) toBeCompared;
+        return theStudent.getStudentId() == getStudentId();
+    }
 
 }
