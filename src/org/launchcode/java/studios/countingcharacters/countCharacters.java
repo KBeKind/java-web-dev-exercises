@@ -1,12 +1,13 @@
 package org.launchcode.java.studios.countingcharacters;
 
-
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Map;
-import java.util.Arrays;
 import java.io.File;
 import java.io.FileNotFoundException;
+
+import java.io.FileWriter;
+import java.io.IOException;
 public class countCharacters {
 
     public static void main(String[] args) {
@@ -26,7 +27,7 @@ public class countCharacters {
             stringToCount = userInputString(scanny);
 
         } else if (userInputSelection.equals("2")){
-            
+
                 scanny.close();
                 Scanner scanFile = null;
                 try {
@@ -74,8 +75,19 @@ public class countCharacters {
         System.out.println("Enter your string to count the characters:");
          String stringInput = scannerObject.nextLine();
          scannerObject.close();
+         addStringToFile(stringInput);
          return stringInput;
     }
 
+    private static void addStringToFile(String userString){
+        String filePath = "src/org/launchcode/java/studios/countingcharacters/stringtocount2.txt";
+        try (FileWriter writer = new FileWriter(filePath)) {
+            writer.write(userString);
+            System.out.println("String also added to 'stringtocount2.txt' for no charge even :D");
+        } catch (IOException e) {
+            System.err.println("Error writing to file: " + e.getMessage());
+        }
+
+    }
 
 }
